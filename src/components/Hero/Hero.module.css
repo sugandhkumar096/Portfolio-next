@@ -1,0 +1,273 @@
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 80px;
+    /* Navbar height */
+    width: 100%;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 4rem;
+}
+
+.content {
+    flex: 1;
+    z-index: 10;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    font-size: 0.9rem;
+    color: #00d2ff;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(5px);
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to right, #fff, #aaa);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.highlight {
+    color: #00d2ff;
+    -webkit-text-fill-color: #00d2ff;
+}
+
+.description {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 2.5rem;
+    max-width: 500px;
+    line-height: 1.6;
+}
+
+.stats {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+.statItem h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+}
+
+.statItem p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+}
+
+.buttons {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.primaryBtn,
+.secondaryBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.primaryBtn {
+    background: linear-gradient(45deg, #00d2ff, #3a7bd5);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
+}
+
+.primaryBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 210, 255, 0.4);
+}
+
+.secondaryBtn {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.secondaryBtn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.imageWrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+.imageContainer {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    aspect-ratio: 1;
+    /* Height must not be auto for 'fill' to work if logic depends on it, but aspect-ratio handles it. 
+       Next.js 'fill' images become absolute, so the container needs non-static position (already set). */
+}
+
+.profileImage {
+    border-radius: 30px;
+    object-fit: cover;
+    z-index: 2;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.circle1,
+.circle2 {
+    position: absolute;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.circle1 {
+    width: 100%;
+    height: 100%;
+    top: -20px;
+    right: -20px;
+    background: linear-gradient(45deg, #00d2ff, transparent);
+    opacity: 0.2;
+    filter: blur(20px);
+}
+
+.circle2 {
+    width: 80%;
+    height: 80%;
+    bottom: -30px;
+    left: -30px;
+    background: linear-gradient(45deg, #3a7bd5, transparent);
+    opacity: 0.2;
+    filter: blur(30px);
+}
+
+@media (max-width: 992px) {
+    .hero {
+        min-height: auto;
+        padding-top: 100px;
+        padding-bottom: 4rem;
+        height: auto;
+    }
+
+    .container {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 2rem;
+    }
+
+    .stats {
+        justify-content: center;
+        width: 100%;
+        margin-top: 2rem;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .imageContainer {
+        max-width: 380px;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding-top: 80px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .description {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+
+    .stats {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+
+    .statItem h3 {
+        font-size: 1.5rem;
+    }
+
+    .imageContainer {
+        max-width: 300px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 400px;
+        gap: 1rem;
+    }
+
+    .primaryBtn,
+    .secondaryBtn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .statItem {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 1rem;
+        border-radius: 10px;
+    }
+
+    .imageContainer {
+        max-width: 260px;
+    }
+}

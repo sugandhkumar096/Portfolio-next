@@ -1,0 +1,222 @@
+.about {
+    padding: 8rem 0;
+    background: #0a0a0a;
+    position: relative;
+    width: 100%;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.header h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, #fff, #aaa);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.header p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.2rem;
+}
+
+.content {
+    display: flex;
+    gap: 4rem;
+    margin-bottom: 6rem;
+    align-items: center;
+}
+
+.imageSection {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.imageWrapper {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.profileImage {
+    display: block;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.imageWrapper:hover .profileImage {
+    transform: scale(1.05);
+}
+
+.textSection {
+    flex: 1.2;
+}
+
+.textSection h3 {
+    font-size: 2rem;
+    color: #00d2ff;
+    margin-bottom: 1.5rem;
+}
+
+.bio {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    font-size: 1.05rem;
+}
+
+.infoGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.infoItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 600;
+}
+
+.value {
+    font-size: 1.1rem;
+    color: #fff;
+    font-weight: 500;
+}
+
+.skillsSection h3 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    color: #fff;
+}
+
+.skillsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.skillCard {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.skillCard:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.skillHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.skillHeader h4 {
+    font-size: 1.2rem;
+    color: #fff;
+    margin: 0;
+}
+
+.skillHeader span {
+    color: #00d2ff;
+    font-weight: 600;
+}
+
+.progressBar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.progressFill {
+    height: 100%;
+    background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+    border-radius: 3px;
+}
+
+.skillCard p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+    line-height: 1.5;
+}
+
+@media (max-width: 992px) {
+    .content {
+        flex-direction: column;
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .infoGrid {
+        text-align: left;
+    }
+
+    .imageWrapper {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .about {
+        padding: 5rem 0;
+    }
+
+    .header h2 {
+        font-size: 2.5rem;
+    }
+
+    .textSection h3 {
+        font-size: 1.8rem;
+    }
+
+    .infoGrid {
+        grid-template-columns: 1fr;
+        /* Stack info items on mobile */
+        gap: 1rem;
+    }
+
+    .skillHeader h4 {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h2 {
+        font-size: 2rem;
+    }
+
+    .bio {
+        font-size: 1rem;
+    }
+}
+
+/* Removed redundant media query as it's merged above */
