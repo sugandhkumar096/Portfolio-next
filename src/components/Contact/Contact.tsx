@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { SiGooglemaps } from 'react-icons/si';
 import { CiPhone } from 'react-icons/ci';
@@ -8,6 +8,40 @@ import { FaRegEnvelope } from 'react-icons/fa6';
 import styles from './Contact.module.css';
 
 const Contact = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+    });
+    const [status, setStatus] = useState('');
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setStatus('Sending...');
+
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+
+            if (res.ok) {
+                setStatus('Message sent successfully!');
+                setFormData({ name: '', email: '', subject: '', message: '' });
+            } else {
+                setStatus('Failed to send message.');
+            }
+        } catch (error) {
+            setStatus('Error sending message.');
+        }
+    };
+
     return (
         <footer className={styles.contact} id="contact">
             <div className={styles.container}>
@@ -72,20 +106,51 @@ const Contact = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <form className={styles.form}>
+                        <form className={styles.form} onSubmit={handleSubmit}>
                             <div className={styles.inputGroup}>
-                                <input type="text" placeholder="Your Name" required suppressHydrationWarning />
+                                <input
+                                    type="text"
+                                    name="name"
+                                    placeholder="Your Name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    required
+                                />
                             </div>
                             <div className={styles.inputGroup}>
-                                <input type="email" placeholder="Your Email" required suppressHydrationWarning />
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="Your Email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    required
+                                />
                             </div>
                             <div className={styles.inputGroup}>
-                                <input type="text" placeholder="Subject" required suppressHydrationWarning />
+                                <input
+                                    type="text"
+                                    name="subject"
+                                    placeholder="Subject"
+                                    value={formData.subject}
+                                    onChange={handleChange}
+                                    required
+                                />
                             </div>
                             <div className={styles.inputGroup}>
-                                <textarea placeholder="Message" required rows={5} suppressHydrationWarning></textarea>
+                                <textarea
+                                    name="message"
+                                    placeholder="Message"
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    required
+                                    rows={5}
+                                ></textarea>
                             </div>
-                            <button type="submit" className={styles.submitBtn} suppressHydrationWarning>Send Message</button>
+                            <button type="submit" className={styles.submitBtn}>
+                                {status === 'Sending...' ? 'Sending...' : 'Send Message'}
+                            </button>
+                            {status && <p style={{ marginTop: '1rem', color: status.includes('success') ? '#00d2ff' : '#ff4d4d' }}>{status}</p>}
                         </form>
                     </motion.div>
                 </div>

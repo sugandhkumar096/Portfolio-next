@@ -30,6 +30,7 @@ const Navbar = () => {
         { name: 'Portfolio', href: '#portfolio' },
         { name: 'Services', href: '#services' },
         { name: 'Contact', href: '#contact' },
+        { name: 'Admin', href: '/admin/login' },
     ];
 
     const socialLinks = [
