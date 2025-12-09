@@ -115,6 +115,7 @@ const Contact = () => {
                                     value={formData.name}
                                     onChange={handleChange}
                                     required
+                                    suppressHydrationWarning
                                 />
                             </div>
                             <div className={styles.inputGroup}>
@@ -125,6 +126,7 @@ const Contact = () => {
                                     value={formData.email}
                                     onChange={handleChange}
                                     required
+                                    suppressHydrationWarning
                                 />
                             </div>
                             <div className={styles.inputGroup}>
@@ -135,6 +137,7 @@ const Contact = () => {
                                     value={formData.subject}
                                     onChange={handleChange}
                                     required
+                                    suppressHydrationWarning
                                 />
                             </div>
                             <div className={styles.inputGroup}>
@@ -145,9 +148,10 @@ const Contact = () => {
                                     onChange={handleChange}
                                     required
                                     rows={5}
+                                    suppressHydrationWarning
                                 ></textarea>
                             </div>
-                            <button type="submit" className={styles.submitBtn}>
+                            <button type="submit" className={styles.submitBtn} suppressHydrationWarning>
                                 {status === 'Sending...' ? 'Sending...' : 'Send Message'}
                             </button>
                             {status && <p style={{ marginTop: '1rem', color: status.includes('success') ? '#00d2ff' : '#ff4d4d' }}>{status}</p>}

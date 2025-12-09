@@ -73,6 +73,7 @@ const AdminLogin = () => {
                             outline: 'none',
                         }}
                         required
+                        suppressHydrationWarning
                     />
                     {error && <p style={{ color: '#ff4d4d', fontSize: '0.9rem', textAlign: 'center' }}>{error}</p>}
                     <button
@@ -89,6 +90,7 @@ const AdminLogin = () => {
                             marginTop: '1rem',
                             opacity: loading ? 0.7 : 1
                         }}
+                        suppressHydrationWarning
                     >
                         {loading ? 'Verifying...' : 'Login'}
                     </button>
