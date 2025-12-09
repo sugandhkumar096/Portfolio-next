@@ -4,6 +4,7 @@ import { cookies } from 'next/headers';
 export async function POST(req: Request) {
     try {
         const { password } = await req.json();
+        console.log('Admin Login Attempt');
         const adminPassword = process.env.ADMIN_PASSWORD;
 
         if (!adminPassword) {
@@ -21,7 +22,7 @@ export async function POST(req: Request) {
             cookieStore.set('admin_session', 'true', {
                 httpOnly: true,
                 secure: process.env.NODE_ENV === 'production',
-                sameSite: 'strict',
+                sameSite: 'lax',
                 maxAge: oneDay,
                 path: '/',
             });

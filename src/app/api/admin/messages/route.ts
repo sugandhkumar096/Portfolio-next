@@ -7,6 +7,7 @@ export async function GET() {
     try {
         const cookieStore = await cookies();
         const adminSession = cookieStore.get('admin_session');
+        console.log('Fetching Messages. Session:', adminSession?.value);
 
         if (!adminSession || adminSession.value !== 'true') {
             return NextResponse.json(

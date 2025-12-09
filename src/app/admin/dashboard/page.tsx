@@ -20,15 +20,28 @@ const AdminDashboard = () => {
     useEffect(() => {
         const fetchMessages = async () => {
             try {
-                const res = await fetch('/api/admin/messages');
+                // Ensure no caching to get fresh data
+                const res = await fetch('/api/admin/messages', {
+                    cache: 'no-store',
+                    headers: { 'Pragma': 'no-cache' }
+                });
+
                 if (res.ok) {
                     const data = await res.json();
                     setMessages(data.messages);
                 } else {
-                    router.push('/admin/login');
+                    if (res.status === 401) {
+                        router.push('/admin/login');
+                    } else {
+                        // Show error for 500 or other issues
+                        const errData = await res.json().catch(() => ({ error: 'Unknown error' }));
+                        console.error('Dashboard Error:', errData);
+                        alert(`Failed to load messages: ${errData.error || res.statusText}`);
+                    }
                 }
             } catch (error) {
-                console.error('Error fetching messages');
+                console.error('Error fetching messages:', error);
+                alert('Connection error. Please check your network or server.');
             } finally {
                 setLoading(false);
             }
