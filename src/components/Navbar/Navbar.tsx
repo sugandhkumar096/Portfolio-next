@@ -58,7 +58,7 @@ const Navbar = () => {
                             <li key={link.name}>
                                 <Link
                                     href={link.href}
-                                    className={styles.navLink}
+                                    className={link.name === 'Admin' ? styles.adminBtn : styles.navLink}
                                     target={link.target}
                                 >
                                     {link.name}
@@ -96,6 +96,7 @@ const Navbar = () => {
                                             href={link.href}
                                             onClick={toggleMenu}
                                             target={link.target}
+                                            className={link.name === 'Admin' ? styles.adminBtn : ''}
                                         >
                                             {link.name}
                                         </Link>
